@@ -24,7 +24,7 @@ $(document).ready(function(){
 		// if/eslse statement compares buttonValue to an empty string
 		if (buttonValue.length < 1){
 
-			// if yes, alert to say it's empty
+			// alert to say it's empty
 			alert("Hey!!!!!");
 		} else {
 
@@ -50,10 +50,10 @@ $(document).ready(function(){
 
 		// getting the data name in a variable
 		var searchTermV1 = $(this).attr("data-name");
+		console.log(searchTermV1);
 		
 		// adding a plus instead of space if the term has a space in it to make it easier to put in the api url
 		var searchTerm = searchTermV1.replace(" ", "+")
-		console.log(searchTerm);
 		
 		// putting together giphy api url
 		var url = "http://api.giphy.com/v1/gifs/search?q=" + searchTerm + "&api_key=" + apiKey + "&limit=5";
@@ -63,13 +63,40 @@ $(document).ready(function(){
         url: url,
         method: "GET"
       	}).done(function(response) {
-	      	console.log(response);
+      		// console logging response object
+      		console.log(response);
+
+      		// for loop that loops through response object results and creates img elements with the object data
 	      	for (var i = 0; i < 5; i++){
+
+	      		// creating div to hold rating and image
+	      		var gifDiv = $("<div>");
+
+	      		// creating p tag for rating
+	      		var ratingInfo = $("<p>");
+
+	      		// creating variable for rating info and entering text
+	      		var rating = response.data[i].rating;
+				ratingInfo.text("Rating: " + rating);
+
+				// creating p tag for img element
+				var gifP = $("<p>");
+
+	      		// creating img element in variable
 	      		var gif = $("<img>");
+
+	      		// creating variable to hold url
 	      		var imageSRC = response.data[i].images.original.url;
-	      		console.log(imageSRC);
+
+	      		// adding an attribute to the img element
 	      		gif.attr("src", imageSRC);
-	      		$("#gifsGoHere").append("<img>");
+
+	      		// appending image to gifP
+	      		gifP.append(gif);
+	      		ratingInfo.append(gifP);
+
+	      		// appending gif to the gifsGoHere div
+	      		$("#gifsGoHere").prepend(ratingInfo);
 	      	}	
       	});
 	});
