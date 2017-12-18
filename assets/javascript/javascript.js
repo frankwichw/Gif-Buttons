@@ -55,15 +55,16 @@ $(document).ready(function(){
 	      		var gif = $("<img>");
 
 	      		// creating variable to hold url and still url
-	      		var imageSRC = response.data[i].images.original.url;
+	      		var imageSRC = response.data[i].images.original_still.url;
+	      		var imageSRCanimated = response.data[i].images.original.url;
 	      		var imageSRCstill = response.data[i].images.original_still.url;
 
 	      		// adding an attributes to the img element
 	      		gif.attr("src", imageSRC);
 	      		gif.addClass("gif");
-	      		gif.attr("data-animated", imageSRC);
+	      		gif.attr("data-animated", imageSRCanimated);
 	      		gif.attr("data-paused", imageSRCstill);
-	      		gif.attr("data-state", "animated");
+	      		gif.attr("data-state", "still");
 
 	      		// appending image to gifP
 	      		gifP.append(gif);
