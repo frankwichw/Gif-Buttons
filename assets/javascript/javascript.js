@@ -107,9 +107,13 @@ $(document).ready(function(){
 		}}
 	);
 
+	// gif pausing function
 	$(document).on("click", ".gif", function(){
+		// if the data state is set to animated
 		if($(this).attr("data-state") == "animated"){
+			// change data state to still
 			$(this).attr("data-state", "still");
+			// change image source to the still image
 			$(this).attr("src", $(this).attr("data-paused"));
 		} else {
 			$(this).attr("data-state", "animated");
