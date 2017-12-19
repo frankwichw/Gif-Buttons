@@ -2,7 +2,7 @@
 $(document).ready(function(){
 
 	// creating variable containing array of preset animals
-	var buttonArray = ["Elephant Seal", "Beetle Larva", "Popplio", "Baby Hippo"];
+	var buttonArray = ["Elephant Seal", "Beetle Larva", "Popplio", "Baby Hippo", "Egret", "Manatee", "Cobra", "Garfield", "Harbor seal", "Gorilla", "Ants", "Worms", "Goat", "Tiger", "Spaniel", "Horseshoe Crab", "Tibetan Sand Fox", "Wolf"];
 	// saving api key in variable
 	var apiKey = "wPg1YGjcKPyROXQ0XAmJ8XgiZvlElTln";
 
